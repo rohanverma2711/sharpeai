@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { useNavigate } from 'react-router-dom';
 
 
 const Data = () => {
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
   const [filteredPosts, setFilteredPosts] = useState([]);
 
   useEffect(() => {
@@ -19,11 +21,13 @@ const Data = () => {
       });
   }, []);
 
+console.log(posts,filteredPosts)
   const filterPosts = (allPosts) => {
     // Filter posts with user ID 1
     const filtered = allPosts.filter((post) => post.userId === 1);
     setFilteredPosts(filtered);
   };
+
 
   const dataForPieChart = [
     { name: 'User ID 1 Posts', value: filteredPosts.length },
@@ -31,12 +35,39 @@ const Data = () => {
   ];
 
   return (
-    <div>
-      <h1>Posts Visualization</h1>
+    <div className='mb-10'>
+       <div className=" hidden sm:block w-4/5 my-4 py-4 rounded-xlg border-1  shadow-navShadow mx-auto mb-10">
+        <div className="flex flex-row justify-between mx-20">
+          <div className="bg-navButton bg-opacity-40 p-1 rounded-md w-40 h-10">
+            <img src="https://framerusercontent.com/images/N3k1tIRG4uhESUSkdVeg8QbCjg.png" />
+          </div>
+          <div className="flex flex-row pt-2">
+          <a
+              onClick={() => navigate("/")}
+              className="mx-4 cursor-pointer"
+            >
+              Home
+            </a>
+            <a
+              onClick={() => navigate("/transaction")}
+              className="mx-4 cursor-pointer"
+            >
+              Transaction
+            </a>
+            <a
+              onClick={() => navigate("/data")}
+              className="mx-4 cursor-pointer"
+            >
+              Data
+            </a>
+          </div>
+        </div>
+      </div>
+      <h1 className='font-monste font-bold  text-4xl text-center mb-10'>Posts Visualization</h1>
 
       {/* Table */}
-      <table>
-        <thead>
+      <table className='w-full text-lg  text-gray-500 m-10'>
+        <thead className='text-lg text-gray-700 uppercase bg-gray-50'>
           <tr>
             <th>ID</th>
             <th>Title</th>
@@ -55,7 +86,12 @@ const Data = () => {
       </table>
 
       {/* Pie Chart */}
-      <div style={{ width: '300px', height: '300px', margin: '20px' }}>
+      <h1 className='font-monste font-bold  text-4xl text-center my-18'>Pie Chart</h1>
+      <div className='flex  justify-center'>
+      
+
+      
+      <div className='h-80 w-80'>
         <ResponsiveContainer>
           <PieChart>
             <Pie
@@ -74,6 +110,7 @@ const Data = () => {
             </Pie>
           </PieChart>
         </ResponsiveContainer>
+        </div>
         </div>
     </div>
   );

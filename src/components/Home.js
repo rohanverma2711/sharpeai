@@ -1,25 +1,36 @@
-import React from 'react'
-import Footer from './Footer'
-import { Resources } from '../Resources'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
+import { Resources } from "../Resources";
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <>
-    <div className=" hidden sm:block w-4/5 my-4 py-4 rounded-xlg border-1  shadow-navShadow mx-auto ">
+      <div className=" hidden sm:block w-4/5 my-4 py-4 rounded-xlg border-1  shadow-navShadow mx-auto ">
         <div className="flex flex-row justify-between mx-20">
-          <div className='bg-navButton rounded-md w-40 h-10'>
+          <div className="bg-navButton bg-opacity-40 p-1 rounded-md w-40 h-10">
             <img src="https://framerusercontent.com/images/N3k1tIRG4uhESUSkdVeg8QbCjg.png" />
           </div>
           <div className="flex flex-row pt-2">
-            
-            <a className="mx-4">Transaction</a>
-            <a className="mx-4">Data</a>
-            
-          </div>
-          <div>
-            <div className="border-navButton text-navButton border-2 rounded-md">
-              <p className="py-2 px-8">Sign In</p>
-            </div>
+          <a
+              onClick={() => navigate("/")}
+              className="mx-4 cursor-pointer"
+            >
+              Home
+            </a>
+            <a
+              onClick={() => navigate("/transaction")}
+              className="mx-4 cursor-pointer"
+            >
+              Transaction
+            </a>
+            <a
+              onClick={() => navigate("/data")}
+              className="mx-4 cursor-pointer"
+            >
+              Data
+            </a>
           </div>
         </div>
       </div>
@@ -90,40 +101,40 @@ function Home() {
         </div>
       </div>
       <div className="bg-newsLetter mt-20 rounded-xxlg">
-            <div className=" flex justify-center items-center py-10">
-              <img src={Resources.images.letter} />
-            </div>
-            <div className="text-4.5xl font-semibold mt-5 text-center leading-15">
-              <p className="text-newLetterText mx-52">
-                Subscribe To Our Newsletter & Get The Coupon Code.
-              </p>
-            </div>
-            <div className="text-xl font-normal py-10 leading-9">
-              <p className="text-tileColortext">
-                All your information is completely confidential
-              </p>
-            </div>
+        <div className=" flex justify-center items-center py-10">
+          <img src={Resources.images.letter} />
+        </div>
+        <div className="text-4.5xl font-semibold mt-5 text-center leading-15">
+          <p className="text-newLetterText mx-52">
+            Subscribe To Our Newsletter & Get The Coupon Code.
+          </p>
+        </div>
+        <div className="text-xl font-normal py-10 leading-9">
+          <p className="text-tileColortext">
+            All your information is completely confidential
+          </p>
+        </div>
 
-            <div className="flex flex-row w-1/2 mx-auto  pb-24 mt-5">
-              <input
-                type="email"
-                id="email"
-                class="mr-3 w-8.75/12 bg-gray-50 border leading-10 border-gray-300 text-gray-900 text-xl rounded-xlg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Type your mail"
-                required
-              ></input>
+        <div className="flex flex-row w-1/2 mx-auto  pb-24 mt-5">
+          <input
+            type="email"
+            id="email"
+            class="mr-3 w-8.75/12 bg-gray-50 border leading-10 border-gray-300 text-gray-900 text-xl rounded-xlg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Type your mail"
+            required
+          ></input>
 
-              <button
-                type="submit"
-                class="w-3.25/12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-extrabold rounded-xlg text-2xl  sm:w-auto px-10 py-5 text-center "
-              >
-                Subscribe
-              </button>
-            </div>
-          </div>
-      <Footer/>
-      </>
-  )
+          <button
+            type="submit"
+            class="w-3.25/12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-extrabold rounded-xlg text-2xl  sm:w-auto px-10 py-5 text-center "
+          >
+            Subscribe
+          </button>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
 }
 
-export default Home
+export default Home;
